@@ -2,6 +2,9 @@ var todoList = {
     todos: [],
     displayTodos: function() {
        console.log('My Todos:', this.todos);
+       for (var i = 0; i < this.todos.length; i++) {
+         console.log(this.todos[i].todoText);
+       }
     },
     addTodo: function(todoText) {
       this.todos.push({
@@ -19,10 +22,13 @@ var todoList = {
     deleteTodo: function(position) {
       this.todos.splice(position, 1);
       this.displayTodos();
-    }
-    toggleCompleted: function( ) {
+    },
+    toggleCompleted: function(position) {
+      // this todo variable just saves typing two lines down (see below)
       var todo = this.todos[position];
       todo.completed = !todo.completed;
+      // var flower = this.todos[position];
+      // flower.completed = !flower.completed;
       this.displayTodos();
     }
-  };  
+  };
