@@ -69,4 +69,17 @@ var todoList = {
       }
       this.displayTodos();
     }
-  };
+  }
+  }
+
+  // Access the display todos button
+
+  var displayTodosButton = document.getElementById('displayTodosButton');
+  console.log(displayTodosButton);
+
+
+  // Run displayTodos when someone clicks displayTodos
+
+  displayTodosButton.addEventListener('click', function() {
+    todoList.displayTodos();
+  });
