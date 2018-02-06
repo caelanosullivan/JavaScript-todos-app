@@ -69,7 +69,7 @@ var todoList = {
         }
     }
 
-  // Handlers to call functions on button click
+  // Handlers to call functions on button click and/or input entry
   var handlers = {
     displayTodos: function() {
         todoList.displayTodos();
@@ -99,4 +99,20 @@ var todoList = {
     toggleAll: function() {
         todoList.toggleAll();
     }
+  };
+
+// New object responsible for what the user sees
+  var view = {
+        displayTodos: function() {
+            var todosUl = document.querySelector('ul');
+
+            // Clear the unordered list before adding li elements
+            todosUl.innerHTML = '';
+
+            // Loop through each item in todos array
+            for (var i = 0; i < todoList.todos.length; i++) {
+                var todoLi = document.createElement('li');
+                todosUl.appendChild(todoLi);
+            }
+        }
   }
