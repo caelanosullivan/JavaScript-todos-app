@@ -72,15 +72,12 @@ var todoList = {
         }
     }
 
-// Select buttons as variables using getElementById method (using HTML id)
-var displayTodosButton = document.getElementById('displayTodosButton');
-var toggleAllButton = document.getElementById('toggleAllButton')
-
-// Add click event listeners to run respective functions
-  displayTodosButton.addEventListener('click', function() {
-    todoList.displayTodos();
-  });
-
-  toggleAllButton.addEventListener('click', function() {
-      todoList.toggleAll();
-  });
+  // Handlers to call functions on button click
+  var handlers = {
+    displayTodos: function() {
+        todoList.displayTodos();
+    },
+    toggleAll: function() {
+        todoList.toggleAll();
+    }
+  }
