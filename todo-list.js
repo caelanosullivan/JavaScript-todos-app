@@ -109,9 +109,10 @@ var todoList = {
             // Clear the unordered list before adding li elements
             todosUl.innerHTML = '';
 
-            // Loop through each item in todos array
+            // Loop through each item in todos array and display it
             for (var i = 0; i < todoList.todos.length; i++) {
                 var todoLi = document.createElement('li');
+                todoLi.textContent = todoList.todos[i].todoText;
                 todosUl.appendChild(todoLi);
             }
         }
