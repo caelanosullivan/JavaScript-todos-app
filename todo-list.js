@@ -112,7 +112,18 @@ var todoList = {
             // Loop through each item in todos array and display it
             for (var i = 0; i < todoList.todos.length; i++) {
                 var todoLi = document.createElement('li');
-                todoLi.textContent = todoList.todos[i].todoText;
+                var todo = todoList.todos[i]
+                var todoTextWithCompletion = '';
+
+                if (todo.completed === true) {
+                    todoTextWithCompletion = '(x) ' + todo.todoText;
+                } else {
+                    todoTextWithCompletion = '( ) ' + todo.todoText;
+                }
+
+                // DOM manipulation
+                // Set li element's textContent property equal to new string
+                todoLi.textContent = todoTextWithCompletion;
                 todosUl.appendChild(todoLi);
             }
         }
