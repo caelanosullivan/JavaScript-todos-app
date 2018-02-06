@@ -38,11 +38,8 @@ var todoList = {
     },
 
     toggleCompleted: function(position) {
-        // this todo variable just saves typing two lines down (see below)
         var todo = this.todos[position];
         todo.completed = !todo.completed;
-        // var flower = this.todos[position];
-        // flower.completed = !flower.completed;
         this.displayTodos();
     },
 
@@ -77,12 +74,29 @@ var todoList = {
     displayTodos: function() {
         todoList.displayTodos();
     },
-    toggleAll: function() {
-        todoList.toggleAll();
-    },
     addTodo: function() {
         var addTodoTextInput = document.getElementById('addTodoTextInput');
         todoList.addTodo(addTodoTextInput.value);
         addTodoTextInput.value = '';
+    },
+    changeTodo: function() {
+        var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
+        var changeTodoTextInput = document.getElementById('changeTodoTextInput');
+        todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+        changeTodoPositionInput.value = '';
+        changeTodoTextInput.value = '';
+    },
+    deleteTodo: function() {
+        var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
+        todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+        deleteTodoPositionInput.value = '';
+    },
+    toggleCompleted: function() {
+        var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
+        todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+        toggleCompletedPositionInput.value = '';
+    },
+    toggleAll: function() {
+        todoList.toggleAll();
     }
   }
