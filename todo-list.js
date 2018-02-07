@@ -65,9 +65,8 @@ var todoList = {
         changeTodoTextInput.value = '';
         view.displayTodos();
     },
-    deleteTodo: function() {
-        todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
-        deleteTodoPositionInput.value = '';
+    deleteTodo: function(position) {
+        todoList.deleteTodo(position);
         view.displayTodos();
     },
     toggleCompleted: function() {
@@ -109,8 +108,10 @@ var todoList = {
                 // Set li element's textContent property equal to new string
                 todoLi.textContent = todoTextWithCompletion;
 
-                //Append a delete button to each to-do item
+                // Append a delete button to each to-do item
                 todoLi.appendChild(this.createDeleteButton());
+
+                // Append the li element to the ul
                 todosUl.appendChild(todoLi);
             }
         },
@@ -122,24 +123,27 @@ var todoList = {
             deleteButton.textContent = 'Delete';
             deleteButton.className = 'deleteButton';
             return deleteButton;
+        },
+        
+        // Event delegation section for event listeners on the list
+        setUpEventListeners: function() {
+            var todosUl = document.querySelector('ul');
+            
+            todosUl.addEventListener('click', function (event) {
+                
+                // Get element clicked with 'target'; 'parentNode' gives li element
+                //   console.log(event.target.parentNode.id);
+
+                // Get the element that was clicked on.
+                var elementClicked = event.target;
+
+                // Check if element clicked is a delete button
+                // parseInt argument grabs id from iteration off li
+                if (elementClicked.className === 'deleteButton') {
+                    handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+                }
+            });
         }
   };
 
-  var todosUl = document.querySelector('ul');
-
-  // 'target' gives element clicked (Delete btn), 'parentNode' gives li element
-  todosUl.addEventListener('click', function (event) {
-    //   console.log(event.target.parentNode.id);
-
-      // Get the element that was clicked on.
-      var elementClicked = event.target;
-
-      // Check if element clicked is a delete button
-      if (elementClicked.className === 'deleteButton') {
-          // Run handlers.deleteTodo
-
-
-
-      }
-
-  });
+  view.setUpEventListeners();
