@@ -86,11 +86,10 @@ var todoList = {
 
             // Clear the unordered list before adding li elements
             todosUl.innerHTML = '';
-
+ 
             // Loop through each item in todos array and display it
-            for (var i = 0; i < todoList.todos.length; i++) {
+            todoList.todos.forEach(function(todo, position) {
                 var todoLi = document.createElement('li');
-                var todo = todoList.todos[i]
                 var todoTextWithCompletion = '';
 
                 if (todo.completed === true) {
@@ -99,8 +98,8 @@ var todoList = {
                     todoTextWithCompletion = '( ) ' + todo.todoText;
                 }
 
-                // Access element id by 'id' property and assign iterand
-                todoLi.id = i;
+                // Access element id by 'id' property
+                todoLi.id = position;
 
                 // DOM manipulation
                 // Set li element's textContent property equal to new string
@@ -111,7 +110,8 @@ var todoList = {
 
                 // Append the li element to the ul
                 todosUl.appendChild(todoLi);
-            }
+            }, this);
+
         },
 
         // Instead of adding event listeners on every delete button, we can add a single listener on the UL
